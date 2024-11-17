@@ -9,7 +9,7 @@ import Link from 'next/link'
 import MerchModel from '../app/components/LandMerchModel'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Footer } from '../app/components/Footer'
- 
+
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
   { model: '/assets/3d/cap.glb', thumbnail: '/assets/merch_cover/cap.png', merchType: 'Cap' },
@@ -99,7 +99,7 @@ export default function Home() {
             </p>
 
             <Button className='bg-blue-800 text-[15px] px-2 py-2'>
-            <Link href='/dashboard'>Launch GV Studio</Link>
+              <Link href='/dashboard'>Launch GV Studio</Link>
             </Button>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function Home() {
             {/* Merch Selection Images */}
             {selectedMerchType !== "T-shirt" && (
               <img
-                layout="intrinsic" 
+                layout="intrinsic"
                 src="/assets/merch_cover/tshirt_cover.png"
                 alt="T-shirt"
                 className="relative md:absolute mx-auto md:m-0 top-[0%] opacity-60 md:top-[38%] h-[10vh] md:h-[20vh] right-0 filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
@@ -122,7 +122,7 @@ export default function Home() {
             )}
             {selectedMerchType !== "Hoodie" && (
               <img
-                layout="intrinsic" 
+                layout="intrinsic"
                 src="/assets/merch_cover/hoodie_cover.png"
                 alt="Hoodie"
                 className="relative md:absolute mx-auto md:m-0 top-[0%] md:top-[38%] opacity-60 h-[10vh] md:h-[17vh] right-[1%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
@@ -155,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* Products Carousel */}
-    
+
       <section id='designs' className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between mb-12">
@@ -186,13 +186,13 @@ export default function Home() {
               <div
                 key={index}
                 className={`relative aspect-square bg-gray-800 rounded-lg overflow-hidden transition-transform duration-500 ease-in-out transform ${index === currentDesign
-                    ? 'scale-105 border-2 border-gradient-to-r from-blue-500 to-cyan-500 shadow-xl'
-                    : 'opacity-60'
+                  ? 'scale-105 border-2 border-gradient-to-r from-blue-500 to-cyan-500 shadow-xl'
+                  : 'opacity-60'
                   } hover:scale-105 hover:bg-blue-600 border-1 hover:border-blue-700 hover:shadow-2xl`}
               >
                 <img
                   src={design.thumbnail}
-                  layout="intrinsic" 
+                  layout="intrinsic"
                   className={`h-[60%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'}`}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -202,7 +202,7 @@ export default function Home() {
                 </div>
                 <div className="absolute bottom-6 right-6 flex space-x-2">
                   <Button size="icon" variant="ghost" className="transition-transform transform hover:scale-110">
-                  <Link href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></Link>
+                    <Link href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></Link>
                   </Button>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function Home() {
             Join thousands of creators who are revolutionizing merchandise design with AI
           </p>
           <Button className="bg-blue-800 z-50 cursor-pointer">
-          <Link href='/dashboard'> Launch GV Studio </Link>
+            <Link href='/dashboard'> Launch GV Studio </Link>
           </Button>
 
         </div>
@@ -269,7 +269,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-  <Footer/>
+      <Footer />
     </div>
   )
 }

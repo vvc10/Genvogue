@@ -4,7 +4,7 @@ import Home from './home'
 const Home = () => {
   return (
     <>
-    <HomePage/>
+    <Home/>
     </>
   );
 };
