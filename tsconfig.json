@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/app/lib/utils.js"
-, "src/pages/Home.js", "src/app/components/Subscribe.js"  ],
+, "src/pages/home.js", "src/app/components/Subscribe.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -2,13 +2,13 @@
 
 import { Canvas, useThree } from '@react-three/fiber'
 import { Environment, OrbitControls, PresentationControls, Html, Text3D } from '@react-three/drei'
-import { Button } from "../components/ui/button"
+import { Button } from "../app/components/ui/button"
 import { useState, Suspense } from 'react'
 import { ChevronLeft, ChevronRight, Play, Share2, Heart, PaintRoller, Paintbrush } from 'lucide-react'
 import Link from 'next/link'
-import MerchModel from '../components/LandMerchModel'
+import MerchModel from '../app/components/LandMerchModel'
 import { motion, useScroll, useTransform } from 'framer-motion'
-
+import { Footer } from '../app/components/Footer'
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
   { model: '/assets/3d/cap.glb', thumbnail: '/assets/merch_cover/cap.png', merchType: 'Cap' },
@@ -75,9 +75,9 @@ export default function Component() {
           GenVogue
         </Link>
         <nav className="hidden md:flex space-x-8">
-          <Link href="#hero" className="hover:text-primary">Home</Link>
-          <Link href="#" className="hover:text-primary">About</Link>
-          <Link href="#designs" className="hover:text-primary">Products</Link>
+          <Link href="/home" className="hover:text-primary">Home</Link>
+          <Link href="/about" className="hover:text-primary">About</Link>
+          <Link href="/designs" className="hover:text-primary">Designs</Link>
           {/* <Link href="#" className="hover:text-primary">Studio</Link> */}
         </nav>
         <Button variant="outline" className="border-gray-300 border-1 text-primary hover:bg-blue-600 hover:text-white">
@@ -263,18 +263,7 @@ export default function Component() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex md:flex-row flex-col gap-4 justify-between items-center">
-            <p className="text-gray-400">© 2024 GenVogue. All rights reserved.</p>
-            <div className="flex space-x-6">
-              <Link href="#" className="text-gray-400 hover:text-white">Terms</Link>
-              <Link href="#" className="text-gray-400 hover:text-white">Privacy</Link>
-              <Link href="#" className="text-gray-400 hover:text-white">Contact</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+  <Footer/>
     </div>
   )
 }
