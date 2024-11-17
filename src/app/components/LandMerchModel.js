@@ -7,20 +7,24 @@ import { Html } from '@react-three/drei';
 const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
   const meshRef = useRef();
 
+  // Early return for invalid modelPath
   if (!modelPath || typeof modelPath !== 'string') {
     console.error('Invalid modelPath:', modelPath);
     return <Html center>Error: Invalid model path</Html>;
   }
 
+  // Always call hooks unconditionally
   const gltf = useLoader(GLTFLoader, modelPath);
   const loadedTexture = designTexture ? useLoader(TextureLoader, designTexture) : null;
 
+  // Apply rotation using useFrame hook
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += rotation;
     }
   });
 
+  // Effect to update material when model or texture changes
   useEffect(() => {
     if (gltf?.scene) {
       gltf.scene.traverse((child) => {
@@ -35,6 +39,7 @@ const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
     }
   }, [color, gltf, loadedTexture]);
 
+  // Define scale and position based on model type
   const getModelScaleAndPosition = () => {
     if (modelPath.includes('cap.glb')) return { scale: [6.2, 6.2, 6.2], position: [0, 0, 0] };
     if (modelPath.includes('cup.glb')) return { scale: [1.2, 1.2, 1.2], position: [0, 0, 0] };
@@ -43,11 +48,13 @@ const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
 
   const { scale, position } = getModelScaleAndPosition();
 
+  // Early return for loading errors
   if (!gltf?.scene) {
     console.error('Failed to load the 3D model:', modelPath);
     return <Html center>Error loading model...</Html>;
   }
 
+  // Render the model
   return (
     <group ref={meshRef} position={position}>
       <primitive object={gltf.scene} scale={scale} />

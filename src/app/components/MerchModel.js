@@ -7,26 +7,26 @@ import { Html } from '@react-three/drei';
 const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
   const meshRef = useRef();
 
-  // Ensure modelPath is valid
+  // Early return if modelPath is invalid
   if (!modelPath || typeof modelPath !== 'string') {
     console.error('Invalid modelPath:', modelPath);
-    return null; // Don't render anything if modelPath is invalid
+    return <Html center>Error: Invalid model path</Html>;
   }
 
-  // Use Suspense to handle the loading of the model
+  // Always call hooks unconditionally
   const gltf = useLoader(GLTFLoader, modelPath);
   const loadedTexture = designTexture ? useLoader(TextureLoader, designTexture) : null;
 
-  // Rotation animation
+  // Rotation animation (called unconditionally)
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += rotation;
     }
   });
 
-  // Update color and texture when color or texture change
+  // Update color and texture when color or texture change (called unconditionally)
   useEffect(() => {
-    if (gltf && gltf.scene) {
+    if (gltf?.scene) {
       gltf.scene.traverse((child) => {
         if (child.isMesh) {
           child.material.color.set(color);
@@ -39,34 +39,31 @@ const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
     }
   }, [color, gltf, loadedTexture]);
 
-  // Model scale and position logic
-  const modelScale = modelPath.includes('cap.glb')
-    ? [6.2, 6.2, 6.2]
-    : modelPath.includes('cup.glb')
-    ? [1.2, 1.2, 1.2]
-    : [5, 5, 5];
+  // Model scale and position logic (always computed unconditionally)
+  const getModelScaleAndPosition = () => {
+    if (modelPath.includes('cap.glb')) return { scale: [6.2, 6.2, 6.2], position: [0, 5.8, 0] };
+    if (modelPath.includes('cup.glb')) return { scale: [1.2, 1.2, 1.2], position: [0, 6.5, 0] };
+    return { scale: [5, 5, 5], position: [0, 0, 0] }; // Default scale and position
+  };
 
-  const modelPosition = modelPath.includes('cap.glb')
-    ? [0, 5.8, 0]
-    : modelPath.includes('cup.glb')
-    ? [0, 6.5, 0]
-    : [0, 0, 0];
+  const { scale, position } = getModelScaleAndPosition();
 
-  if (!gltf || !gltf.scene) {
+  // Early return if model failed to load
+  if (!gltf?.scene) {
     console.error('Failed to load the 3D model:', modelPath);
     return <Html center>Error loading model...</Html>;
   }
 
   return (
-    <group ref={meshRef} position={modelPosition}>
-      <primitive object={gltf.scene} scale={modelScale} />
+    <group ref={meshRef} position={position}>
+      <primitive object={gltf.scene} scale={scale} />
     </group>
   );
 };
 
-const MerchModelWithSuspense = ({ modelPath, color, rotation, designTexture }) => (
+const MerchModelWithSuspense = (props) => (
   <Suspense fallback={<Html center>Loading model...</Html>}>
-    <MerchModel modelPath={modelPath} color={color} rotation={rotation} designTexture={designTexture} />
+    <MerchModel {...props} />
   </Suspense>
 );
 
