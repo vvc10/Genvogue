@@ -5,6 +5,7 @@ import { Button } from '../app/components/ui/button'
 import { useState } from 'react'
 import Notice from '../app/components/Notice'
 import { Footer } from '../app/components/Footer'
+import Image from 'next/image'
 
 const merchDesigns = [
     { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
@@ -73,7 +74,7 @@ const designs = () => {
                                     : 'opacity-60'
                                     } hover:scale-105 hover:bg-blue-600 border-1 hover:border-blue-700 hover:shadow-2xl`}
                             >
-                                <img
+                                <Image
                                     src={design.thumbnail}
                                     className={`h-[60%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'}`}
                                 />
