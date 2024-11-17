@@ -1,0 +1,29 @@
+{
+    "glyphs": {
+      "A": {
+        "x_min": 10,
+        "x_max": 610,
+        "ha": 620,
+        "o": "m 305 0 l 0 900 l 120 900 l 220 600 l 390 600 l 490 900 l 610 900 l 305 0 m 305 150 l 420 500 l 190 500 l 305 150"
+      },
+      "B": {
+        "x_min": 10,
+        "x_max": 580,
+        "ha": 600,
+        "o": "m 10 0 l 10 900 l 430 900 l 580 800 l 580 650 l 490 570 q 580 480 580 330 l 580 180 l 430 80 l 10 0 m 170 170 l 400 170 l 500 250 l 500 400 l 400 470 l 170 470 l 170 170 m 170 530 l 400 530 l 500 600 l 500 780 l 400 830 l 170 830 l 170 530"
+      }
+    },
+    "resolution": 1000,
+    "boundingBox": {
+      "yMin": -200,
+      "yMax": 1200,
+      "xMin": 0,
+      "xMax": 1000
+    },
+    "familyName": "Geist Bold",
+    "ascender": 1200,
+    "descender": -200,
+    "underlinePosition": -75,
+    "underlineThickness": 50
+  }
+  
