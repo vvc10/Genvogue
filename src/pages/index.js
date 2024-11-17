@@ -1,6 +1,6 @@
 // src/app/pages/index.js
 import React from 'react';
-import HomePage from './Home'
+import Home from './home'
 const Home = () => {
   return (
     <>
