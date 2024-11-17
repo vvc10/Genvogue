@@ -1,6 +1,6 @@
 // src/app/pages/index.js
 import React from 'react';
-import HomePage from './home'
+import HomePage from './Home'
 const Home = () => {
   return (
     <>
@@ -10,3 +10,4 @@ const Home = () => {
 };
 
 export default Home;
+

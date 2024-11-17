@@ -9,7 +9,6 @@ import { Slider } from "../app/components/ui/slider"
 import { Input } from "../app/components/ui/input"
 import { Button } from "../app/components/ui/button"
 import { Paintbrush, Mic, Share2, Save, Undo, Redo, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
-import Image from 'next/image'
 
 const API_TOKEN = "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"; // Make sure to keep this secure!
 const apiEndpoint = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0";
@@ -167,7 +166,7 @@ function DesignSuggestions({ designs, onSelect }) {
           className="w-16 h-16 rounded-lg overflow-hidden cursor-pointer hover:ring-2 ring-blue-500"
           onClick={() => onSelect(design)}
         >
-          <Image src={design} alt={`Suggestion ${index + 1}`} className="w-full h-full object-cover" />
+          <img src={design} alt={`Suggestion ${index + 1}`} className="w-full h-full object-cover" />
         </motion.div>
       ))}
     </div>

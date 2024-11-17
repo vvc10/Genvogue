@@ -219,10 +219,17 @@ export default function TitanInvestmentApp() {
                         <CardTitle className="text-xl font-semibold">{product.name}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="relative overflow-hidden rounded-md mb-4">
-                          <img src={product.image} alt={product.name} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
+                        <div className="relative overflow-hidden rounded-md mb-4 group">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            width={500} // Adjust width based on expected size
+                            height={192} // Adjust height based on expected size
+                            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
                           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
                         </div>
+
                         <div className="flex justify-between text-sm">
                           <span>Price: ₹{product.price}</span>
                           <span>Cycle: {product.cycle}</span>
