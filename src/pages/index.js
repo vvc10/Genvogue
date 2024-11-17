@@ -1,13 +1,13 @@
 // src/app/pages/index.js
 import React from 'react';
-import Home from './home'
-const Home = () => {
+import Home from './home';
+
+const HomePage = () => {
   return (
     <>
-    <Home/>
+      <Home />
     </>
   );
 };
 
-export default Home;
-
+export default HomePage;
