@@ -46,7 +46,7 @@ function Scene({ modelPath, selectedMerchType, designTexture }) {
             <MerchModel
               modelPath={modelPath}
               color="blue"
-              rotation={0}
+              rotation={0.009}
               designTexture={designTexture}
             />
           </group>

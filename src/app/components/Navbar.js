@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from 'next/link'
+
 const Navbar = () => {
     const GlowingButton = ({ children }) => (
         <button className="relative px-6 py-3 font-bold text-white rounded-lg group overflow-hidden">

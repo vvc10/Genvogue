@@ -24,7 +24,7 @@ const designs = () => {
 
     return (
         <div>
-            <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black">
+            <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black/30">
                 <Link href="/home" className="text-[18px] font-bold">
                     GenVogue
                 </Link>
@@ -39,7 +39,7 @@ const designs = () => {
                 </Button>
             </header>
 
-            <section id='designs' className="py-24 relative">
+            <section id='designs' className="py-24 relative bg-black">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col items-center justify-between mb-12">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-wider">Designs</h2>
