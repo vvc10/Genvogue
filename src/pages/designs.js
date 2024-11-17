@@ -5,7 +5,7 @@ import { Button } from '../app/components/ui/button'
 import { useState } from 'react'
 import Notice from '../app/components/Notice'
 import { Footer } from '../app/components/Footer'
- 
+import Image from 'next/image'
 
 const merchDesigns = [
     { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
@@ -24,7 +24,7 @@ const designs = () => {
 
     return (
         <div>
-            <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black/30">
+            <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black">
                 <Link href="/home" className="text-[18px] font-bold">
                     GenVogue
                 </Link>
@@ -74,11 +74,14 @@ const designs = () => {
                                     : 'opacity-60'
                                     } hover:scale-105 hover:bg-blue-600 border-1 hover:border-blue-700 hover:shadow-2xl`}
                             >
-                                <img
+                                <Image
                                     src={design.thumbnail}
-                                    layout="intrinsic" 
+                                    alt={`Design ${index + 1}`}  // Add an alt tag for accessibility
+                                    width={180}   // Set the width (adjust according to your needs)
+                                    height={300}  // Set the height (adjust according to your needs)
                                     className={`h-[60%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'}`}
                                 />
+
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <h3 className="text-2xl sm:text-3xl font-semibold text-white opacity-90 hover:opacity-100 transition-opacity duration-300">
                                         {design.merchType}
@@ -93,9 +96,10 @@ const designs = () => {
                         ))}
                     </div>
                 </div>
+                <Notice />
             </section>
 
-            <Notice />
+
             <Footer />
         </div>
     )

@@ -17,7 +17,7 @@ import { useLoader } from '@react-three/fiber'
 import { OrbitControls, Environment, Html, PerspectiveCamera } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../app/components/ui/dialog"
-
+import Image from 'next/image'
 
 
 export default function MerchDesignerDashboard() {
@@ -45,11 +45,12 @@ export default function MerchDesignerDashboard() {
         className="overflow-hidden cursor-pointer transition-transform bg-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:scale-105 shadow-md hover:shadow-lg"
       >
         <CardHeader className="p-0 h-[250px] w-full bg-gray-200">
-
-          <img
+          <Image
             src={design.image}
             alt={design.name}
-            className="h-48 w-full object-cover filter drop-shadow-2xl"
+            width={200}   // Set appropriate width
+            height={200}  // Set appropriate height
+            className="object-cover mx-auto filter drop-shadow-2xl"
           />
         </CardHeader>
         <CardContent className="p-4">

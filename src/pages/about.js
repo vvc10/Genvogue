@@ -6,7 +6,7 @@ import { Footer } from '../app/components/Footer'
 const about = () => {
   return (
     <div>
-       <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black/30">
+       <header className="fixed w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-black">
         <Link href="/home" className="text-[18px] font-bold">
           GenVogue
         </Link>

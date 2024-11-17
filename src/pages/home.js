@@ -9,6 +9,8 @@ import Link from 'next/link'
 import MerchModel from '../app/components/LandMerchModel'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Footer } from '../app/components/Footer'
+import Image from 'next/image'
+
 
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
@@ -110,43 +112,52 @@ export default function Home() {
             <Scene selectedMerchType={selectedMerchType} modelPath={currentModelPath} />
           </div>
           <div className='h-[30%] md:h-[100%] items-center'>
-            {/* Merch Selection Images */}
+
             {selectedMerchType !== "T-shirt" && (
-              <img
-                layout="intrinsic"
+              <Image
                 src="/assets/merch_cover/tshirt_cover.png"
                 alt="T-shirt"
-                className="relative md:absolute mx-auto md:m-0 top-[0%] opacity-60 md:top-[38%] h-[10vh] md:h-[20vh] right-0 filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
+                width={120}   // Set appropriate width
+                height={300}  // Set appropriate height
+                className="relative md:absolute mx-auto md:m-0 top-[0%] opacity-60 md:top-[38%] h-[15vh] md:h-[20vh] sm:h-[12vh] right-0 filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
                 onClick={() => setSelectedMerchType("T-shirt")}
               />
             )}
+
             {selectedMerchType !== "Hoodie" && (
-              <img
-                layout="intrinsic"
+              <Image
                 src="/assets/merch_cover/hoodie_cover.png"
                 alt="Hoodie"
-                className="relative md:absolute mx-auto md:m-0 top-[0%] md:top-[38%] opacity-60 h-[10vh] md:h-[17vh] right-[1%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
+                width={170}   // Set appropriate width
+                height={300}  // Set appropriate height
+                className="relative md:absolute mx-auto md:m-0 top-[0%] md:top-[38%] opacity-60 h-[15vh] md:h-[17vh] sm:h-[12vh] right-[1%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
                 onClick={() => setSelectedMerchType("Hoodie")}
               />
             )}
+
+
+            {/* If you want to re-enable Cap and Mug options, use the same structure */}
             {/* {selectedMerchType !== "Cap" && (
-            <img
-              layout="intrinsic" 
-              src="/assets/merch_cover/cap_cover.png"
-              alt="Cap"
-              className="absolute top-[60%] h-[20vh] right-[20%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
-              onClick={() => setSelectedMerchType("Cap")}
-            />
-          )}
-          {selectedMerchType !== "Mug" && (
-            <img
-              layout="intrinsic" 
-              src="/assets/merch_cover/mug_cover.png"
-              alt="Mug"
-              className="absolute top-[80%] h-[20vh] right-[30%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
-              onClick={() => setSelectedMerchType("Mug")}
-            />
-          )} */}
+  <Image
+    src="/assets/merch_cover/cap_cover.png"
+    alt="Cap"
+    width={500}   // Set appropriate width
+    height={300}  // Set appropriate height
+    className="absolute top-[60%] h-[20vh] right-[20%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
+    onClick={() => setSelectedMerchType("Cap")}
+  />
+)} 
+{selectedMerchType !== "Mug" && (
+  <Image
+    src="/assets/merch_cover/mug_cover.png"
+    alt="Mug"
+    width={500}   // Set appropriate width
+    height={300}  // Set appropriate height
+    className="absolute top-[80%] h-[20vh] right-[30%] filter brightness-150 transition-all duration-300 hover:scale-75 cursor-pointer"
+    onClick={() => setSelectedMerchType("Mug")}
+  />
+)} */}
+
           </div>
 
 
@@ -190,11 +201,15 @@ export default function Home() {
                   : 'opacity-60'
                   } hover:scale-105 hover:bg-blue-600 border-1 hover:border-blue-700 hover:shadow-2xl`}
               >
-                <img
+                <Image
                   src={design.thumbnail}
-                  layout="intrinsic"
-                  className={`h-[60%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'}`}
+                  alt={`Design ${index + 1}`} // Add an alt tag for accessibility
+                  width={180}   // Set the width (adjust according to your needs)
+                  height={200}  // Set the height (adjust according to your needs)
+                  className={`h-[50%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'} sm:h-[35vh] md:h-[25vh] lg:h-[25vh]`}
+                // Adjusting height for different screen sizes: small screens, medium, and large
                 />
+
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h3 className="text-2xl sm:text-3xl font-semibold text-white opacity-90 hover:opacity-100 transition-opacity duration-300">
                     {design.merchType}

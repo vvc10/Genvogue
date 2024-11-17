@@ -56,7 +56,7 @@ function TShirtModel({ color, rotation, designTexture, scale }) {
         if (child.isMesh) {
           // Apply color to all parts
           child.material.color.set(color);
-          
+
           // Apply design texture only to the "Back" part
           if (child.name === 'Back') { // Ensure this matches the name in your model
             child.material.map = backTexture.current;
@@ -85,30 +85,30 @@ function TShirtModel({ color, rotation, designTexture, scale }) {
 
 function PromptCapsule({ prompt, setPrompt, onSubmit }) {
   return (
- 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="absolute bottom-10 p-2 w-[100vw] transform -translate-x-1/2"
-      >
-        <div className="bg-gray-900 shadow-2xl bg-opacity-50 backdrop-blur-lg w-[60%] mx-auto border-[1px] border-gray-800 rounded-[10px] p-2 flex items-center">
-          <Input
-            type="text"
-            placeholder="Enter your design idea..."
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            className="flex-1 rounded-[20px] bg-transparent border-none text-white placeholder-gray-400 focus:ring-0"
-          />
-          <Button onClick={() => console.log("Voice input activated")} className="ml-2 rounded-[20px] hover:opacity-50 text-white">
-            <Mic className="h-4 w-4" />
-          </Button>
-          <Button onClick={onSubmit} className="ml-2 rounded-[20px] bg-black hover:opacity-50 text-white">
-            <Paintbrush className="mr-2 h-4 w-4" /> Create
-          </Button>
-           
-        </div>
-      </motion.div>
-    
+
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="absolute bottom-10 p-2 w-[100vw] transform -translate-x-1/2"
+    >
+      <div className="bg-gray-900 shadow-2xl bg-opacity-50 backdrop-blur-lg w-[60%] mx-auto border-[1px] border-gray-800 rounded-[10px] p-2 flex items-center">
+        <Input
+          type="text"
+          placeholder="Enter your design idea..."
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          className="flex-1 rounded-[20px] bg-transparent border-none text-white placeholder-gray-400 focus:ring-0"
+        />
+        <Button onClick={() => console.log("Voice input activated")} className="ml-2 rounded-[20px] hover:opacity-50 text-white">
+          <Mic className="h-4 w-4" />
+        </Button>
+        <Button onClick={onSubmit} className="ml-2 rounded-[20px] bg-black hover:opacity-50 text-white">
+          <Paintbrush className="mr-2 h-4 w-4" /> Create
+        </Button>
+
+      </div>
+    </motion.div>
+
   )
 }
 
@@ -166,8 +166,13 @@ function DesignSuggestions({ designs, onSelect }) {
           className="w-16 h-16 rounded-lg overflow-hidden cursor-pointer hover:ring-2 ring-blue-500"
           onClick={() => onSelect(design)}
         >
-          <img src={design} alt={`Suggestion ${index + 1}`} className="w-full h-full object-cover" />
-        </motion.div>
+          <Image
+            src={design}
+            alt={`Suggestion ${index + 1}`}
+            width={500}   // Set appropriate width
+            height={300}  // Set appropriate height
+            className="w-full h-full object-cover"
+          />        </motion.div>
       ))}
     </div>
   )

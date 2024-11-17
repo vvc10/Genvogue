@@ -17,7 +17,7 @@ import Navbar from '../app/components/Navbar'
 import Sidebar from '../app/components/Sidebar'
 import { useRouter } from 'next/router'
 import { RiEdit2Line } from "react-icons/ri";
-
+import Image from 'next/image'
 
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType:'T-shirt' },
