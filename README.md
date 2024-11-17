@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GenVogue - AI-Powered Merch Designer
 
-## Getting Started
+GenVogue is an innovative AI-powered merch designer platform that allows users to create custom merchandise by applying designs to various 3D models such as t-shirts, hoodies, caps, and more. It leverages AI technology to generate unique designs and offers a seamless user experience for real-time previews and modifications.
 
-First, run the development server:
+---
+
+## Features
+
+- **3D Model Visualization**: Interact with 3D models of t-shirts, hoodies, caps, mugs, and other merchandise.
+- **AI Design Generation**: Use AI to generate unique designs based on user input.
+- **Real-Time Preview**: View and modify designs applied to 3D models instantly.
+- **Augmented Reality (AR)**: View your designs in AR by scanning a QR code.
+- **Interactive Interface**: User-friendly design and model selection with smooth transitions.
+- **Responsive Design**: Optimized for mobile, tablet, and desktop views.
+
+---
+
+## Technologies Used
+
+- **Frontend**:
+  - React.js
+  - Next.js
+  - Tailwind CSS
+  - Radix UI
+  - Three.js (for 3D rendering)
+  - TinyColor2 (for color manipulation)
+  
+- **Backend**:
+  - Node.js
+  - Express.js
+  - Redux for state management
+  
+- **APIs**:
+  - Hugging face API (AI-powered design generation)
+  - FLUX API (3D model design application)
+  - Firebase (for authentication and data management)
+
+---
+
+## Installation
+
+To set up and run GenVogue locally:
+
+ 
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+git clone https://github.com/vvc10/genvogue.git
+cd genvogue
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+ ## Query? 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contact - vvastcore10@gmail.com
