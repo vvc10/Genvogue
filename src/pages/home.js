@@ -61,7 +61,7 @@ function Scene({ modelPath, selectedMerchType, designTexture }) {
 }
 
 
-export default function Component() {
+export default function Home() {
   const [currentProduct, setCurrentProduct] = useState(0)
   const [selectedMerchType, setSelectedMerchType] = useState("Hoodie");
   const [currentDesign, setCurrentDesign] = useState("Hoodie")
