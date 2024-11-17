@@ -14,22 +14,22 @@ const Navbar = () => {
             <header className="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-700">
                 <nav className="container mx-auto px-6 py-3">
                     <div className="flex justify-between items-center">
-                        <a href="#" className="text-2xl font-bold">
+                        <Link href="#" className="text-2xl font-bold">
                         GenVogue
-                        </a>
+                        </Link>
                         <div className="hidden md:flex space-x-4">
-                            <a href="#" className="hover:text-purple-400 transition duration-300">
+                            <Link href="#" className="hover:text-purple-400 transition duration-300">
                                 Home
-                            </a>
-                            <a href="#" className="hover:text-purple-400 transition duration-300">
+                            </Link>
+                            <Link href="#" className="hover:text-purple-400 transition duration-300">
                                 Products
-                            </a>
-                            <a href="#" className="hover:text-purple-400 transition duration-300">
+                            </Link>
+                            <Link href="#" className="hover:text-purple-400 transition duration-300">
                                 Design Studio
-                            </a>
-                            <a href="#" className="hover:text-purple-400 transition duration-300">
+                            </Link>
+                            <Link href="#" className="hover:text-purple-400 transition duration-300">
                                 About
-                            </a>
+                            </Link>
                         </div>
                         <GlowingButton>
                             {/* <ShoppingCart className="inline-block mr-2" /> */}

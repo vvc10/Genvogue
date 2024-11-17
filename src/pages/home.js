@@ -81,7 +81,7 @@ export default function Component() {
           {/* <Link href="#" className="hover:text-primary">Studio</Link> */}
         </nav>
         <Button variant="outline" className="border-gray-300 border-1 text-primary hover:bg-blue-600 hover:text-white">
-          <a href='/dashboard'>Launch Studio</a>
+          <Link href='/dashboard'>Launch Studio</Link>
         </Button>
       </header>
 
@@ -98,7 +98,7 @@ export default function Component() {
             </p>
 
             <Button className='bg-blue-800 text-[15px] px-2 py-2'>
-            <a href='/dashboard'>Launch GV Studio</a>
+            <Link href='/dashboard'>Launch GV Studio</Link>
             </Button>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Component() {
                 </div>
                 <div className="absolute bottom-6 right-6 flex space-x-2">
                   <Button size="icon" variant="ghost" className="transition-transform transform hover:scale-110">
-                  <a href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></a>
+                  <Link href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></Link>
                   </Button>
                 </div>
               </div>
@@ -251,7 +251,7 @@ export default function Component() {
             Join thousands of creators who are revolutionizing merchandise design with AI
           </p>
           <Button className="bg-blue-800 z-50 cursor-pointer">
-          <a href='/dashboard'> Launch GV Studio </a>
+          <Link href='/dashboard'> Launch GV Studio </Link>
           </Button>
 
         </div>

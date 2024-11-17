@@ -78,7 +78,7 @@ const about = () => {
             At GenVogue, we’re not just about creating designs; we’re about creating a community of like-minded individuals who want to push the boundaries of fashion and self-expression. Be part of our growing family, and let's redefine what it means to wear something truly unique.
           </p>
           <Button className="bg-blue-800 z-50 cursor-pointer mt-4">
-          <a href='/dashboard'> Launch GV Studio </a>
+          <Link href='/dashboard'> Launch GV Studio </Link>
           </Button>
         </div>
       </div>
