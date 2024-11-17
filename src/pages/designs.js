@@ -15,7 +15,7 @@ const merchDesigns = [
 ]
 
 
-const designs = () => {
+const Designs = () => {
     const [selectedMerchType, setSelectedMerchType] = useState("Hoodie");
     const [currentDesign, setCurrentDesign] = useState("Hoodie")
     // Get the model path for the selected merch type
@@ -89,7 +89,7 @@ const designs = () => {
                                 </div>
                                 <div className="absolute bottom-6 right-6 flex space-x-2">
                                     <Button size="icon" variant="ghost" className="transition-transform transform hover:scale-110">
-                                        <a href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></a>
+                                        <Link href='/designboard'>  <Paintbrush className="h-5 w-5 text-white hover:text-primary" /></Link>
                                     </Button>
                                 </div>
                             </div>
@@ -101,8 +101,9 @@ const designs = () => {
 
 
             <Footer />
+
         </div>
     )
 }
 
-export default designs
+export default Designs
