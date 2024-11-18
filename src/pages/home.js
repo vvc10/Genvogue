@@ -201,13 +201,12 @@ export default function Home() {
                   : 'opacity-60'
                   } hover:scale-105 hover:bg-blue-600 border-1 hover:border-blue-700 hover:shadow-2xl`}
               >
-                <Image
+              <Image
                   src={design.thumbnail}
-                  alt={`Design ${index + 1}`} // Add an alt tag for accessibility
+                  alt={`Design ${index + 1}`}  // Add an alt tag for accessibility
                   width={180}   // Set the width (adjust according to your needs)
-                  height={200}  // Set the height (adjust according to your needs)
-                  className={`h-[50%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'} sm:h-[35vh] md:h-[25vh] lg:h-[25vh]`}
-                // Adjusting height for different screen sizes: small screens, medium, and large
+                  height={300}  // Set the height (adjust according to your needs)
+                  className={`h-[60%] z-50 mx-auto mt-14 ${index === currentDesign ? 'opacity-100' : 'opacity-30'}`}
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center">
