@@ -4,27 +4,31 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { TextureLoader } from 'three';
 import { Html } from '@react-three/drei';
 
-const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
+const MerchModel = ({ modelPath, color = 'white', rotation = 0.01, designTexture }) => {
   const meshRef = useRef();
 
-  // Early return for invalid modelPath
+  // Validate inputs
   if (!modelPath || typeof modelPath !== 'string') {
-    console.error('Invalid modelPath:', modelPath);
+    console.error('Invalid or missing modelPath:', modelPath);
     return <Html center>Error: Invalid model path</Html>;
   }
 
-  // Always call hooks unconditionally
+  // Load the 3D model
   const gltf = useLoader(GLTFLoader, modelPath);
-  const loadedTexture = designTexture ? useLoader(TextureLoader, designTexture) : null;
 
-  // Apply rotation using useFrame hook
+  // Load texture only if a valid designTexture is provided
+  const loadedTexture = designTexture
+    ? useLoader(TextureLoader, designTexture)
+    : null;
+
+  // Handle model rotation
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += rotation;
     }
   });
 
-  // Effect to update material when model or texture changes
+  // Apply texture and color
   useEffect(() => {
     if (gltf?.scene) {
       gltf.scene.traverse((child) => {
@@ -39,22 +43,21 @@ const MerchModel = ({ modelPath, color, rotation, designTexture }) => {
     }
   }, [color, gltf, loadedTexture]);
 
-  // Define scale and position based on model type
+  // Determine scale and position for different models
   const getModelScaleAndPosition = () => {
     if (modelPath.includes('cap.glb')) return { scale: [6.2, 6.2, 6.2], position: [0, 0, 0] };
     if (modelPath.includes('cup.glb')) return { scale: [1.2, 1.2, 1.2], position: [0, 0, 0] };
-    return { scale: [4, 4, 4], position: [0, -5.5, 0] }; // Centered by default
+    return { scale: [4, 4, 4], position: [0, -5.5, 0] }; // Default values
   };
 
   const { scale, position } = getModelScaleAndPosition();
 
-  // Early return for loading errors
+  // Ensure the model loaded successfully
   if (!gltf?.scene) {
     console.error('Failed to load the 3D model:', modelPath);
     return <Html center>Error loading model...</Html>;
   }
 
-  // Render the model
   return (
     <group ref={meshRef} position={position}>
       <primitive object={gltf.scene} scale={scale} />
