@@ -13,10 +13,10 @@ import Sidebar from '../app/components/Sidebar'
 import { useRouter } from 'next/router'
 
 const merchDesigns = [
-  { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType:'T-shirt' },
-  { model: '/assets/3d/cap.glb', thumbnail: '/assets/merch_cover/cap.png', merchType:'Cap'  },
-  { model: '/assets/3d/hoodie.glb', thumbnail: '/assets/merch_cover/hoodie.webp', merchType:'Hoodie' },
-  { model: '/assets/3d/cup.glb', thumbnail: '/assets/merch_cover/cup_1.png', merchType:'Mug' },
+  { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
+  { model: '/assets/3d/cap.glb', thumbnail: '/assets/merch_cover/cap.png', merchType: 'Cap' },
+  { model: '/assets/3d/hoodie.glb', thumbnail: '/assets/merch_cover/hoodie.webp', merchType: 'Hoodie' },
+  { model: '/assets/3d/cup.glb', thumbnail: '/assets/merch_cover/cup_1.png', merchType: 'Mug' },
 ]
 
 
@@ -175,16 +175,23 @@ export default function DesignBoard() {
           >
             <div className="h-full flex flex-col">
               <div className="flex-1 relative">
-               <Canvas>
+                <Canvas>
                   <Suspense fallback={<Html center>Loading 3D model...</Html>}>
                     <PerspectiveCamera makeDefault position={[0, 6.5, zoom]} />
                     <ambientLight intensity={0.5} />
                     <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
                     <MerchModel modelPath={selectedModel} color={color} rotation={rotation} designTexture={designTexture} />
-                    <OrbitControls target={[0, 6.2, 0]} enableZoom />
+                    <OrbitControls
+                      target={[0, 6.2, 0]}
+                      enableZoom={true}
+                      enableRotate={true}
+                      enablePan={false}
+                    />
                     <Environment preset="studio" />
                   </Suspense>
                 </Canvas>
+
+
               </div>
               <div className="flex flex-col items-center px-0 py-1 fixed bottom-4 right-4 top-[10vh] h-fit rounded-[10px] bg-gray-900 bg-opacity-70 backdrop-blur-md gap-4">
                 <Button variant="secondary" size="icon" onClick={() => setZoom(Math.max(zoom - 1, 2))}>

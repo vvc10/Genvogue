@@ -7,37 +7,41 @@ import { Html } from '@react-three/drei';
 const MerchModel = ({ modelPath, color = 'white', rotation = 0.01, designTexture }) => {
   const meshRef = useRef();
 
-  // Always load the 3D model
+  // Load 3D model
   const gltf = useLoader(GLTFLoader, modelPath);
 
-  // Always load the texture (fallback to null if not provided)
-  const loadedTexture = useLoader(TextureLoader, designTexture || '');
+  // Load texture (if provided)
+  const loadedTexture = designTexture ? useLoader(TextureLoader, designTexture) : null;
 
-  // Apply rotation (always execute)
+  // Rotate the model
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += rotation;
     }
   });
 
-  // Apply texture and color (always execute)
+  // Apply color and texture to the model's materials
   useEffect(() => {
     if (gltf?.scene) {
       gltf.scene.traverse((child) => {
-        if (child.isMesh) {
-          child.material.color.set(color);
-          child.material.map = loadedTexture || null;
-          child.material.needsUpdate = true;
+        if (child.isMesh && child.material) {
+          child.material.color.set(color); // Apply color
+          child.material.map = loadedTexture || null; // Apply texture
+          child.material.needsUpdate = true; // Update material
         }
       });
     }
   }, [color, gltf, loadedTexture]);
 
-  // Determine scale and position
+  // Get scale and position based on the model type
   const getModelScaleAndPosition = () => {
-    if (modelPath.includes('cap.glb')) return { scale: [6.2, 6.2, 6.2], position: [0, 5.8, 0] };
-    if (modelPath.includes('cup.glb')) return { scale: [1.2, 1.2, 1.2], position: [0, 6.5, 0] };
-    return { scale: [5, 5, 5], position: [0, 0, 0] }; // Default scale and position
+    if (modelPath.includes('cap.glb')) {
+      return { scale: [6.2, 6.2, 6.2], position: [0, 5.8, 0] };
+    }
+    if (modelPath.includes('cup.glb')) {
+      return { scale: [1.2, 1.2, 1.2], position: [0, 6.5, 0] };
+    }
+    return { scale: [5, 5, 5], position: [0, 0, 0] }; // Default case
   };
 
   const { scale, position } = getModelScaleAndPosition();
