@@ -2,22 +2,15 @@
 
 import { useState, useRef, useEffect, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-
 import { OrbitControls, Environment, Html, PerspectiveCamera } from '@react-three/drei'
-
 import { Button } from "../app/components/ui/button"
 import { Input } from "../app/components/ui/input"
 import { motion } from 'framer-motion'
-import { TextureLoader } from 'three'
 import { ZoomIn, ZoomOut } from 'lucide-react'
 import { MdOutlineRotateLeft } from "react-icons/md"
-import MerchTypeSidebar from '../app/components/MerchTypeSidebar'
 import MerchModel from '../app/components/MerchModel'
-import Navbar from '../app/components/Navbar'
 import Sidebar from '../app/components/Sidebar'
 import { useRouter } from 'next/router'
-import { RiEdit2Line } from "react-icons/ri";
-import Image from 'next/image'
 
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType:'T-shirt' },

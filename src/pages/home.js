@@ -1,14 +1,13 @@
 'use client'
 
 import { Canvas, useThree } from '@react-three/fiber'
-import { Environment, OrbitControls, PresentationControls, Html, Text3D } from '@react-three/drei'
+import { Environment, OrbitControls, PresentationControls } from '@react-three/drei'
 import { Button } from "../app/components/ui/button"
 import { useState, Suspense } from 'react'
-import { ChevronLeft, ChevronRight, Play, Share2, Heart, PaintRoller, Paintbrush } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Paintbrush } from 'lucide-react'
 import Link from 'next/link'
 import MerchModel from '../app/components/LandMerchModel'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Footer } from '../app/components/Footer'
+ import { Footer } from '../app/components/Footer'
 import Image from 'next/image'
 
 

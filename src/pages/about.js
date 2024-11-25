@@ -17,7 +17,7 @@ const about = () => {
           {/* <Link href="#" className="hover:text-primary">Studio</Link> */}
         </nav>
         <Button variant="outline" className="border-gray-300 border-1 text-primary hover:bg-blue-600 hover:text-white">
-          <a href='/dashboard'>Launch Studio</a>
+          <Link href='/dashboard'>Launch Studio</Link>
         </Button>
       </header>
 

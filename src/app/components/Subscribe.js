@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronDown, ShoppingCart, Palette, Move, Star, ChevronLeft, ChevronRight, Zap, Cpu, VolumeX, Volume2 } from 'lucide-react'
+import { Zap } from 'lucide-react'
 
 const Subscribe = () => {
     const GlowingButton = ({ children, className = '' }) => (

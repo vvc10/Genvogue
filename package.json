@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rmdir /s /q .next"
   },
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.10",
@@ -46,7 +47,8 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.169.0",
     "three-stdlib": "^2.33.0",
-    "tinycolor2": "^1.6.0"
+    "tinycolor2": "^1.6.0",
+    "three-mesh-bvh": "^0.8.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.1",

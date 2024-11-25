@@ -2,22 +2,17 @@
 
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, ChevronDown, Grid, Layout, Search, Settings, Shirt, ShoppingBag, User, Moon, Sun, Menu } from 'lucide-react'
+import { Bell, Shirt, Moon, Sun, Menu } from 'lucide-react'
 import { Button } from "../app/components/ui/button"
 import { Input } from "../app/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "../app/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../app/components/ui/dropdown-menu"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../app/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../app/components/ui/card"
-import { Progress } from "../app/components/ui/progress"
+ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../app/components/ui/card"
 import { useRouter } from 'next/navigation'
 import Loader from '../app/components/Loader'
-import { Canvas } from '@react-three/fiber'
-import { useLoader } from '@react-three/fiber'
-import { OrbitControls, Environment, Html, PerspectiveCamera } from '@react-three/drei'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../app/components/ui/dialog"
 import Image from 'next/image'
+import { Footer } from '../app/components/Footer'
 
 
 export default function MerchDesignerDashboard() {
@@ -96,144 +91,150 @@ export default function MerchDesignerDashboard() {
   }
 
   return (
-    <div
-      className={`flex h-screen transition-colors duration-300 ease-in-out ${darkMode ? 'bg-gradient-to-br from-gray-900 to-gray-800 bg-opacity-50 text-white' : 'bg-gray-100 text-gray-800'
-        }`}>
+    <>
+      <div
+        className={`flex flex-col h-screen transition-colors duration-300 ease-in-out ${darkMode ? 'bg-gradient-to-br from-gray-900 to-gray-800 bg-opacity-50 text-white' : 'bg-gray-100 text-gray-800'
+          }`}>
 
 
-      {/* Sidebar */}
-      <AnimatePresence>
-        {sidebarOpen && (
-          <motion.aside
-            initial={{ x: -300 }}
-            animate={{ x: 0 }}
-            exit={{ x: -300 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed inset-y-0 left-0 z-50 w-64 bg-gray-100 p-6 shadow-lg dark:bg-gray-900 dark:text-white lg:relative lg:translate-x-0"
-          >
-            <h2 className="mb-6 text-xl font-semibold">Merch Types</h2>
-            <nav>
-              {merchTypes.map((type) => (
+        {/* Sidebar */}
+        <AnimatePresence>
+          {sidebarOpen && (
+            <motion.aside
+              initial={{ x: -300 }}
+              animate={{ x: 0 }}
+              exit={{ x: -300 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed inset-y-0 left-0 z-50 w-64 bg-gray-100 p-6 shadow-lg dark:bg-gray-900 dark:text-white lg:relative lg:translate-x-0"
+            >
+              <h2 className="mb-6 text-xl font-semibold">Merch Types</h2>
+              <nav>
+                {merchTypes.map((type) => (
+                  <Button
+                    key={type}
+                    variant="ghost"
+                    className="mb-2 w-full justify-start text-gray-700 dark:text-gray-300 hover:text-green-400"
+                  >
+                    <Shirt className="mr-3 h-5 w-5" />
+                    {type}
+                  </Button>
+                ))}
+              </nav>
+            </motion.aside>
+          )}
+        </AnimatePresence>
+
+        <main className="flex-1 overflow-y-auto transition-colors duration-300 ease-in-out bg-gray-100 dark:bg-gray-900 dark:text-white">
+          {/* Header */}
+          <header className="sticky top-0 z-10 flex items-center justify-between bg-white p-4 shadow-sm dark:bg-gray-800 dark:shadow-lg dark:border-b dark:border-gray-700">
+            <div className="flex items-center">
+              <Button variant="ghost" size="icon" className="mr-2 lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+              </Button>
+              <h1 className="text-[17px] font-bold">GenVogue</h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Input
+                type="search"
+                placeholder="Search designs..."
+                className="hidden md:block bg-gray-200 dark:bg-gray-700 dark:text-white"
+              />
+              <Button variant="ghost" size="icon" className="text-gray-600 dark:text-gray-400">
+                <Bell className="h-5 w-5" />
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-8 w-8 rounded-full border border-gray-300 dark:border-gray-600">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src="/placeholder.svg" alt="@johndoe" />
+                      <AvatarFallback>JD</AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-white text-black dark:bg-gray-800">
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuItem>Logout</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
+                {darkMode ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-gray-500" />}
+              </Button>
+            </div>
+          </header>
+
+          {/* Quick Access Links */}
+          <nav className="sticky top-16 z-10 flex items-center justify-between bg-white p-4 shadow-sm dark:bg-gray-800 dark:shadow-lg dark:border-b dark:border-gray-700">
+            <div className="flex space-x-1 gap-0">
+              <Button variant="link" className="text-gray-600  dark:text-gray-300 hover:text-green-700">Merches</Button>
+              <Button variant="link" className="text-gray-600 dark:text-gray-300 hover:text-green-700">Your Designs</Button>
+              <Button variant="link" className="text-gray-600 dark:text-gray-300 hover:text-green-700">Store</Button>
+            </div>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-green-700 text-white hover:bg-green-600 dark:bg-teal-500 dark:hover:bg-teal-600"
+            >
+              Start Designing
+            </Button>
+          </nav>
+
+          {/* Design Showcase Area */}
+          <section className="p-6">
+            <h2 className="mb-4 text-xl font-semibold mx-auto">What you wanna design today?</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {merchDesigns.map((design) => (
+                <DesignCard
+                  key={design.id}
+                  design={design}
+                  onClick={() => handleNavigate(design.type)}
+                />
+              ))}
+            </div>
+          </section>
+
+
+          {/* Additional sections omitted for brevity */}
+        </main>
+
+        {/* Modal */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="max-w-md bg-white text-black">
+            <DialogHeader>
+              <DialogTitle>Choose a Merch Type</DialogTitle>
+            </DialogHeader>
+            <div className="grid grid-cols-2 gap-4 my-4">
+              {merchDesigns.map((merch) => (
                 <Button
-                  key={type}
-                  variant="ghost"
-                  className="mb-2 w-full justify-start text-gray-700 dark:text-gray-300 hover:text-green-400"
+                  key={merch.type}
+                  onClick={() => setSelectedMerch(merch.type)}
+                  className={`flex items-center justify-center p-3 border rounded-lg 
+                  ${selectedMerch === merch.type ? 'bg-green-200 dark:bg-green-800' : 'border-gray-300 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-green-800'}`}
                 >
-                  <Shirt className="mr-3 h-5 w-5" />
-                  {type}
+                  {merch.icon}
+                  {merch.type}
                 </Button>
               ))}
-            </nav>
-          </motion.aside>
-        )}
-      </AnimatePresence>
+            </div>
+            <DialogFooter>
+              {selectedMerch && (
+                <DialogFooter className='items-center'>
+                  <Button
+                    onClick={() => handleNavigate(selectedMerch)}
+                    // onClick={() => console.log(`Starting design for ${selectedMerch}`)}
+                    className="bg-green-700 text-white hover:bg-green-600"
+                  >
+                    Start Design
+                  </Button>
+                </DialogFooter>
+              )}
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
-      <main className="flex-1 overflow-y-auto transition-colors duration-300 ease-in-out bg-gray-100 dark:bg-gray-900 dark:text-white">
-        {/* Header */}
-        <header className="sticky top-0 z-10 flex items-center justify-between bg-white p-4 shadow-sm dark:bg-gray-800 dark:shadow-lg dark:border-b dark:border-gray-700">
-          <div className="flex items-center">
-            <Button variant="ghost" size="icon" className="mr-2 lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
-              <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-            </Button>
-            <h1 className="text-[17px] font-bold">GenVogue</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Input
-              type="search"
-              placeholder="Search designs..."
-              className="hidden md:block bg-gray-200 dark:bg-gray-700 dark:text-white"
-            />
-            <Button variant="ghost" size="icon" className="text-gray-600 dark:text-gray-400">
-              <Bell className="h-5 w-5" />
-            </Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full border border-gray-300 dark:border-gray-600">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="/placeholder.svg" alt="@johndoe" />
-                    <AvatarFallback>JD</AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white text-black dark:bg-gray-800">
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
-              {darkMode ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-gray-500" />}
-            </Button>
-          </div>
-        </header>
+        <Footer darkMode={darkMode} />
+      </div>
 
-        {/* Quick Access Links */}
-        <nav className="sticky top-16 z-10 flex items-center justify-between bg-white p-4 shadow-sm dark:bg-gray-800 dark:shadow-lg dark:border-b dark:border-gray-700">
-          <div className="flex space-x-1 gap-0">
-            <Button variant="link" className="text-gray-600  dark:text-gray-300 hover:text-green-700">Merches</Button>
-            <Button variant="link" className="text-gray-600 dark:text-gray-300 hover:text-green-700">Your Designs</Button>
-            <Button variant="link" className="text-gray-600 dark:text-gray-300 hover:text-green-700">Store</Button>
-          </div>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-green-700 text-white hover:bg-green-600 dark:bg-teal-500 dark:hover:bg-teal-600"
-          >
-            Start Designing
-          </Button>
-        </nav>
+    </>
 
-        {/* Design Showcase Area */}
-        <section className="p-6">
-          <h2 className="mb-4 text-xl font-semibold mx-auto">What you wanna design today?</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {merchDesigns.map((design) => (
-              <DesignCard
-                key={design.id}
-                design={design}
-                onClick={() => handleNavigate(design.type)}
-              />
-            ))}
-          </div>
-        </section>
-
-
-        {/* Additional sections omitted for brevity */}
-      </main>
-
-      {/* Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-md bg-white text-black">
-          <DialogHeader>
-            <DialogTitle>Choose a Merch Type</DialogTitle>
-          </DialogHeader>
-          <div className="grid grid-cols-2 gap-4 my-4">
-            {merchDesigns.map((merch) => (
-              <Button
-                key={merch.type}
-                onClick={() => setSelectedMerch(merch.type)}
-                className={`flex items-center justify-center p-3 border rounded-lg 
-                  ${selectedMerch === merch.type ? 'bg-green-200 dark:bg-green-800' : 'border-gray-300 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-green-800'}`}
-              >
-                {merch.icon}
-                {merch.type}
-              </Button>
-            ))}
-          </div>
-          <DialogFooter>
-            {selectedMerch && (
-              <DialogFooter className='items-center'>
-                <Button
-                  onClick={() => handleNavigate(selectedMerch)}
-                  // onClick={() => console.log(`Starting design for ${selectedMerch}`)}
-                  className="bg-green-700 text-white hover:bg-green-600"
-                >
-                  Start Design
-                </Button>
-              </DialogFooter>
-            )}
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </div>
   )
 }

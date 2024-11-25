@@ -4,8 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 import tinycolor from 'tinycolor2'
 import { Button } from "@/app/components/ui/button"
-import { Input } from "@/app/components/ui/input"
-import { Palette, Wand2, Layout, Share2, Save, Undo, Redo, Loader2, Type, Image as ImageIcon, Move, Trash2, Mic, VolumeX, Volume2, Zap } from 'lucide-react'
+import { Wand2, Loader2 } from 'lucide-react'
  
 
 const AIDesignSuggestion = ({ onApply }) => {

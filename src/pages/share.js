@@ -14,6 +14,7 @@ export default function SharePage({ selectedModel, color, rotation, designTextur
   // Handle rotating the model
   const handleRotation = () => {
     setRotation(rotationState === 0.01 ? 0 : 0.01);
+    setZoom('')
   }
 
   // Export the model (for now, just a placeholder)

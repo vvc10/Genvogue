@@ -11,8 +11,8 @@ const ARPreview = () => {
         <Image
   src="/placeholder.svg?height=200&width=200&text=AR+QR+Code"
   alt="AR QR Code"
-  width={200} // Set appropriate width
-  height={200} // Set appropriate height
+  width={200} 
+  height={200}  
   className="w-40 h-40"
 />        </div>
       </div>

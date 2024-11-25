@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronLeft, ChevronRight, Play, Share2, Heart, PaintRoller, Paintbrush } from 'lucide-react'
+import {  Paintbrush } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '../app/components/ui/button'
 import { useState } from 'react'
