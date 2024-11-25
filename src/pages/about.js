@@ -28,18 +28,15 @@ const about = () => {
               Welcome to GenVogue!
             </h2>
             <p className="mt-6 text-[16px] opacity-55 max-w-2xl mx-auto">
-              At <span className="font-bold text-primary">GenVogue</span>, we believe that fashion is not just about wearing clothes; it&rsquo;s about expressing your personality, your creativity, and your uniqueness. We are a cutting-edge platform that empowers individuals to design custom AI-generated merchandise, enabling you to bring your personal style to life with ease and innovation.
+              At <span className="font-bold text-primary">GenVogue</span>, we believe that fashion is not just about wearing clothes; it&apos;s about expressing your personality, your creativity, and your uniqueness. We are a cutting-edge platform that empowers individuals to design custom AI-generated merchandise, enabling you to bring your personal style to life with ease and innovation.
             </p>
-
-
-
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-3xl font-bold mb-4">Our Mission</h3>
               <p className="text-[16px] opacity-55">
-                Our mission is to revolutionize the way people design and wear apparel. We are dedicated to providing a seamless, intuitive, and creative experience where anyone, regardless of their design skills, can generate stunning and personalized merch. Whether you're a content creator, a brand, or an individual looking for something exclusive, GenVogue allows you to create designs that truly reflect your individuality.
+                Our mission is to revolutionize the way people design and wear apparel. We are dedicated to providing a seamless, intuitive, and creative experience where anyone, regardless of their design skills, can generate stunning and personalized merch. Whether you&apos;re a content creator, a brand, or an individual looking for something exclusive, GenVogue allows you to create designs that truly reflect your individuality.
               </p>
             </div>
 
@@ -63,7 +60,7 @@ const about = () => {
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h4 className="text-xl font-semibold mb-3">3D Visualization</h4>
                 <p className="text-[16px] opacity-55">
-                  Visualize your designs in real-time on 3D models, giving you the freedom to see every detail and make sure it&rsquo;s perfect before you commit.
+                  Visualize your designs in real-time on 3D models, giving you the freedom to see every detail and make sure it&apos;s perfect before you commit.
                 </p>
               </div>
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
@@ -78,7 +75,7 @@ const about = () => {
           <div className="mt-16 text-center">
             <h3 className="text-3xl font-bold mb-4">Join Us on Our Journey</h3>
             <p className="text-[16px] opacity-55 justify-center w-[80%] mx-auto">
-              At GenVogue, we’re not just about creating designs; we’re about creating a community of like-minded individuals who want to push the boundaries of fashion and self-expression. Be part of our growing family, and let's redefine what it means to wear something truly unique.
+              At GenVogue, we&apos;re not just about creating designs; we&apos;re about creating a community of like-minded individuals who want to push the boundaries of fashion and self-expression. Be part of our growing family, and let&apos;s redefine what it means to wear something truly unique.
             </p>
             <Button className="bg-blue-800 z-50 cursor-pointer mt-4">
               <Link href='/dashboard'> Launch GV Studio </Link>
