@@ -11,6 +11,7 @@ import { MdOutlineRotateLeft } from "react-icons/md"
 import MerchModel from '../app/components/MerchModel'
 import Sidebar from '../app/components/Sidebar'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const merchDesigns = [
   { model: '/assets/3d/t_shirt.glb', thumbnail: '/assets/merch_cover/tshirt.png', merchType: 'T-shirt' },
@@ -53,11 +54,37 @@ export default function DesignBoard() {
     setSelectedModel(modelPath)
   }
 
-  const handlePromptSubmit = async () => {
-    setIsGenerating(true)
-    // Implement AI generation logic here
-    setIsGenerating(false)
-  }
+
+
+  const handlePromptSubmit = async (event) => {
+    event.preventDefault();
+    setIsGenerating(true);
+
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-v1-4",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_TOKEN}`,
+        },
+        body: JSON.stringify({ inputs: prompt }),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Failed to generate image");
+      setIsGenerating(false);
+      return;
+    }
+
+    const blob = await response.blob();
+    const imageUrl = URL.createObjectURL(blob);
+    setDesignTexture(imageUrl);
+    setIsGenerating(false);
+  };
+
+
   const fileInputRef = useRef(null);
 
   const handleButtonClick = () => {
@@ -244,7 +271,11 @@ export default function DesignBoard() {
               </div>
             </div>
 
-            {/* <MerchTypeSidebar designs={merchDesigns} onSelect={handleModelSelect} selectedModel={selectedModel} /> */}
+            {designTexture && (
+              <div className="mt-4 p-4 bg-gray-900 rounded-md">
+                <Image height={100} width={100} src={designTexture} alt="Generated Design" className="w-full h-auto rounded-md" />
+              </div>
+            )}
 
           </motion.div>
         </div>

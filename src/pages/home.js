@@ -93,10 +93,10 @@ export default function Home() {
         <div className=" inset-0 flex items-center justify-center w-[100%] md:w-[50%]">
           <div className="max-w-4xl mx-auto text-left space-y-8 p-6">
             <h1 className="text-6xl font-bold tracking-tighter">
-              AI-Powered 3D Merch Design
+          Wear your  thoughts. Think unique. Wear unique
             </h1>
             <p className="text-xl text-gray-400">
-              Transform your ideas into stunning merchandise with our AI-powered 3D design studio
+              Transform your ideas into stunning merchandise with our AI-powered merch design studio.
             </p>
 
             <Button className='bg-blue-800 text-[15px] px-2 py-2'>
@@ -229,7 +229,7 @@ export default function Home() {
       <section className="py-24">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-bold text-white text-center mb-12">
-            Why Choose AI·MERCH
+            Why Choose GenVogue?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* First Feature */}
